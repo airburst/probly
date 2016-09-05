@@ -1,0 +1,12 @@
+.url {
+    color: black;
+    text-decoration: underline;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.buttonContainer {
+    padding: 4px;
+}

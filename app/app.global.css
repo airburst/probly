@@ -2,10 +2,9 @@ body {
   position: relative;
   color: white;
   height: 100vh;
-  background-color: #232C39;
+  background-color: #CFD8DC;
   /*background: url('/app/images/escheresque_ste.png');*/
-  font-family: Arial, Helvetica, Helvetica Neue;
-  overflow-y: hidden;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
 h2 {
