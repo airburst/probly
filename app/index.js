@@ -8,6 +8,7 @@ import configureStore from './store/configureStore';
 import './app.global.css';
 import * as FeedbackActions from './actions/feedback';
 const firebase = require('firebase');
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Setup Firebase
 const config = {
@@ -32,6 +33,9 @@ ref.on('value', (data) => {
   });
   store.dispatch(FeedbackActions.setFeedback(feedback));
 });
+
+// Touch Tap Plugin
+injectTapEventPlugin();
 
 render(
   <Provider store={store}>

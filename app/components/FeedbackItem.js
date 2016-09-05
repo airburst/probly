@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './FeedbackItem.css';
 var moment = require('moment');
+import {ListItem} from 'material-ui/List';
 
 export default class FeedbackItem extends Component {
 
@@ -17,12 +18,15 @@ export default class FeedbackItem extends Component {
     const { item } = this.props;
 
     return (
-      <div>
-        <span>Site: {item.site}</span><br/>
-        <span>Feedback: {item.feedback}</span><br/>
-        <span>Url: {item.url}</span><br/>
-        <span>Raised: {this.formatDate(item.dateRaised)}</span><br/>
-      </div>
+      <ListItem key={item.key}>
+        <div className="feedback-row">
+          <span className="site">{item.site}</span>
+          <span className="feedback">{item.feedback}</span>
+          <span className="url">{item.url}</span>
+          <span className="fill-space"></span>
+          <span className="time"><i>{this.formatDate(item.dateRaised)}</i></span>
+        </div>
+      </ListItem>
     );
   }
 
