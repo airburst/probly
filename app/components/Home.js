@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 // import { Link } from 'react-router';
 import styles from './Home.css';
+import FeedbackListHeading from './FeedbackListHeading';
 import FeedbackItem from './FeedbackItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {List} from 'material-ui/List';
@@ -18,8 +19,8 @@ class Home extends Component {
       <MuiThemeProvider>
         <div role="main" id="main">
           <Paper className="feedback-container" zDepth={2}>
-            {feedback.length} Feedback items:
-            <List className="feedback-list">
+            <FeedbackListHeading count={feedback.length} />
+            <List className={styles.feedbackList}>
               {feedback.map((f) => {
                 return <FeedbackItem key={f.key} item={f} />
               }) }
