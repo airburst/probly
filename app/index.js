@@ -24,7 +24,6 @@ const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
 ref.on('value', (data) => {
-  // emptyTable(table);
   const feedback = [];
   data.forEach((row) => {
     const item = Object.assign({}, row.val());
