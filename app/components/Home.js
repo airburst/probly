@@ -8,7 +8,7 @@ import Paper from 'material-ui/Paper';
 import Snackbar from 'material-ui/Snackbar';
 import Toggle from 'material-ui/Toggle';
 import AppBar from 'material-ui/AppBar';
-import { lime100, indigo900, white } from 'material-ui/styles/colors';
+import { red200 } from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import styles from './Home.css';
@@ -24,9 +24,6 @@ const toggleStyles = {
   },
   toggle: {
     marginBottom: 16,
-  },
-  detailsBar: {
-    backgroundColor: lime100
   },
   chip: {
     margin: 12
@@ -71,6 +68,7 @@ class Home extends Component {
               <div className={styles.detailsBar}>
                 <Chip
                   style={toggleStyles.chip}
+                  backgroundColor={red200}
                 >
                   {feedback.length} feedback items
                 </Chip>
