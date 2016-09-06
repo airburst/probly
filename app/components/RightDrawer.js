@@ -6,6 +6,8 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import Snackbar from 'material-ui/Snackbar';
 var moment = require('moment');
 
 export default class RightDrawer extends Component {
@@ -15,6 +17,19 @@ export default class RightDrawer extends Component {
     open: PropTypes.bool.isRequired,
     drawerTap: PropTypes.func.isRequired
   }
+
+  constructor(props) {
+    super(props);
+    this.state = { snackBarOpen: false };
+  }
+
+  handleTouchTap = () => {
+    this.setState({ snackBarOpen: true });
+  };
+
+  handleRequestClose = () => {
+    this.setState({ snackBarOpen: false });
+  };
 
   formatDate(date) {
     return moment(date).format('DD/MM/YYYY');
@@ -39,9 +54,18 @@ export default class RightDrawer extends Component {
         </div>
         <Divider/>
         <div className={styles.buttonContainer}>
-          <RaisedButton label="Copy to clipboard" primary={true} style={style} />
+          <CopyToClipboard text={item.feedback}
+            onCopy={() => this.handleTouchTap() }>
+            <RaisedButton label="Copy to clipboard" primary={true} style={style} />
+          </CopyToClipboard>
           <RaisedButton label="Close Item" secondary={true} style={style} />
         </div>
+        <Snackbar
+          open={this.state.snackBarOpen}
+          message="Copied..."
+          autoHideDuration={2000}
+          onRequestClose={this.handleRequestClose}
+        />
       </Drawer>
     );
   }
