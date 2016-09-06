@@ -1,4 +1,5 @@
-import { store } from '../index';
+import store from '../index';
+
 const firebase = require('firebase');
 
 export const SET_FEEDBACK = 'SET_FEEDBACK';
@@ -19,14 +20,30 @@ export function setFeedback(feedback) {
   };
 }
 
+// Connect to Firebase Ref and dispatch updates to app on changes
 export function initialise() {
   fireDB.on('value', (data) => {
-    const feedback = [];
-    data.forEach((row) => {
-      const item = Object.assign({}, row.val());
-      item.key = row.key;
-      feedback.push(item);
-    });
+    const feedback = filterOpenItems(data); // Filter Open records
     store.dispatch(setFeedback(feedback));
   });
+}
+
+const filterOpenItems = (data) => {
+  const feedback = [];
+  const filterOpenRecords = store.getState().settings.filterOpenRecords;
+  data.forEach((row) => {
+    const item = Object.assign({}, row.val());
+    item.key = row.key;
+    if ((item.status === 'Open') || !filterOpenRecords) { feedback.push(item); }
+  });
+  return feedback;
+};
+
+export function closeItem(key) {
+  updateItem(key, { status: 'Closed' });
+}
+
+export function updateItem(key, changes) {
+  const ref = fireDB.child(key);
+  ref.update(changes);
 }

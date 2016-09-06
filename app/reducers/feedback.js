@@ -1,6 +1,8 @@
 import { SET_FEEDBACK } from '../actions/feedback';
 
-export default function counter(state = [], action) {
+
+
+export default function feedback(state = [], action) {
   switch (action.type) {
 
     case SET_FEEDBACK:

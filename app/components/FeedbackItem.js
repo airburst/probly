@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './FeedbackItem.css';
-var moment = require('moment');
-import {List} from 'material-ui/List';
-import {ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
+import {List, ListItem} from 'material-ui/List';
 import RightDrawer from './RightDrawer';
+import styles from './FeedbackItem.css';
+
+const moment = require('moment');
 
 export default class FeedbackItem extends Component {
 
@@ -32,7 +30,8 @@ export default class FeedbackItem extends Component {
       <div>
         <ListItem
           key={item.key}
-          onTouchTap={this.handleToggle}>
+          onTouchTap={this.handleToggle}
+        >
           <div>
             <div className={styles.site}>{item.site}</div>
             <div>
@@ -44,8 +43,9 @@ export default class FeedbackItem extends Component {
         <Divider />
         <RightDrawer
           item={item}
-          open={this.state.open} 
-          drawerTap={this.handleToggle} />
+          open={this.state.open}
+          drawerTap={this.handleToggle}
+        />
       </div>
     );
   }

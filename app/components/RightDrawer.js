@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './RightDrawer.css';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
@@ -8,7 +7,10 @@ import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import Snackbar from 'material-ui/Snackbar';
-var moment = require('moment');
+import * as FeedbackActions from '../actions/feedback';
+import styles from './RightDrawer.css';
+
+const moment = require('moment');
 
 export default class RightDrawer extends Component {
 
@@ -31,6 +33,11 @@ export default class RightDrawer extends Component {
     this.setState({ snackBarOpen: false });
   };
 
+  closeItem = () => {
+    FeedbackActions.closeItem(this.props.item.key);
+    this.props.drawerTap();
+  }
+
   formatDate(date) {
     return moment(date).format('DD/MM/YYYY');
   }
@@ -40,25 +47,39 @@ export default class RightDrawer extends Component {
     const style = { margin: 12 };
 
     return (
-      <Drawer width={400} openSecondary={true} open={open}>
+      <Drawer width={400} openSecondary open={open}>
         <AppBar
           title={<span style={styles.title}>{item.site}</span>}
           iconElementLeft={<IconButton onTouchTap={drawerTap}><NavigationClose /></IconButton>}
-          />
+        />
         <div>
           <div className={styles.list}>{item.feedback}</div>
-          <div className={styles.list}><a className={styles.url} href={item.url} target="_blank" title="Link to page with issue">{item.url}</a></div>
+          <div className={styles.list}>
+            <a
+              className={styles.url}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Link to page with issue"
+            >{item.url}</a>
+          </div>
           <div className={styles.list}>{item.browser}</div>
           <div className={styles.list}>{item.viewport}</div>
           <div className={styles.list}>{this.formatDate(item.dateRaised) }</div>
         </div>
-        <Divider/>
+        <Divider />
         <div className={styles.buttonContainer}>
-          <CopyToClipboard text={item.feedback}
-            onCopy={() => this.handleTouchTap() }>
-            <RaisedButton label="Copy to clipboard" primary={true} style={style} />
+          <CopyToClipboard
+            text={item.feedback}
+            onCopy={() => this.handleTouchTap()}
+          >
+            <RaisedButton label="Copy to clipboard" primary style={style} />
           </CopyToClipboard>
-          <RaisedButton label="Close Item" secondary={true} style={style} />
+          <RaisedButton
+            label="Close Item"
+            secondary style={style}
+            onTouchTap={this.closeItem}
+          />
         </div>
         <Snackbar
           open={this.state.snackBarOpen}
