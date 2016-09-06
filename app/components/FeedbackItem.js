@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Divider from 'material-ui/Divider';
-import {List, ListItem} from 'material-ui/List';
+import { ListItem } from 'material-ui/List';
 import RightDrawer from './RightDrawer';
 import styles from './FeedbackItem.css';
 

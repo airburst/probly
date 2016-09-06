@@ -17,4 +17,7 @@
   padding: 0px !important;
 }
 
-
+.detailsBar {
+  display: flex;
+  flex-direction: row;
+}

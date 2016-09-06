@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import Badge from 'material-ui/Badge';
+import Chip from 'material-ui/Chip';
+import Divider from 'material-ui/Divider';
 import { List } from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import Snackbar from 'material-ui/Snackbar';
 import Toggle from 'material-ui/Toggle';
 import AppBar from 'material-ui/AppBar';
+import { lime100, indigo900, white } from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import styles from './Home.css';
@@ -18,10 +20,16 @@ import theme from './theme';
 const toggleStyles = {
   block: {
     maxWidth: 250,
-    padding: 16
+    paddingTop: 16
   },
   toggle: {
     marginBottom: 16,
+  },
+  detailsBar: {
+    backgroundColor: lime100
+  },
+  chip: {
+    margin: 12
   },
 };
 
@@ -60,6 +68,22 @@ class Home extends Component {
 
           <Paper zDepth={0}>
             <List className={styles.feedbackList}>
+              <div className={styles.detailsBar}>
+                <Chip
+                  style={toggleStyles.chip}
+                >
+                  {feedback.length} feedback items
+                </Chip>
+                <div style={toggleStyles.block}>
+                  <Toggle
+                    label="Only show Open items"
+                    defaultToggled={this.props.settings.filterOpenRecords}
+                    onToggle={this.handleToggle}
+                    style={toggleStyles.toggle}
+                  />
+                </div>
+              </div>
+              <Divider />
               {feedback.map((f) => { return <FeedbackItem key={f.key} item={f} />; }) }
             </List>
           </Paper>
@@ -79,22 +103,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-          // <Toolbar style={toolbarStyles.boxShadow}>
-          //   <ToolbarGroup>
-          //     <ToolbarTitle text="Product Feedback" />
-          //     <div style={toggleStyles.block}>
-          //       <Badge badgeContent={feedback.length} primary />
-          //     </div>
-          //   </ToolbarGroup>
-          //   <ToolbarGroup>
-          //     <div style={toggleStyles.block}>
-          //       <Toggle
-          //         label="Only show Open items"
-          //         defaultToggled={this.props.settings.filterOpenRecords}
-          //         onToggle={this.handleToggle}
-          //         style={toggleStyles.toggle}
-          //       />
-          //     </div>
-          //   </ToolbarGroup>
-          // </Toolbar>
