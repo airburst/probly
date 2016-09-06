@@ -1,18 +1,11 @@
 body {
   position: relative;
   color: white;
-  height: 100vh;
-  background-color: #CFD8DC;
-  /*background: url('/app/images/escheresque_ste.png');*/
+  height: 100%;
+  background-color: #424242;  /*EEEEEE*/
   font-family: 'Roboto', Arial, sans-serif;
-}
-
-h2 {
   margin: 0;
-  font-size: 2.25rem;
-  font-weight: bold;
-  letter-spacing: -.025em;
-  color: #fff;
+  padding: 8px;
 }
 
 p {

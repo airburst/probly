@@ -24,13 +24,9 @@ class Home extends Component {
         <div role="main" id="main">
           <AppBar
             title={<span style={styles.title}>Product Feedback</span>}
-            iconElementRight={<Badge
-                    badgeContent={feedback.length}
-                    primary={true}
-                    >
-                </Badge>}
+            iconElementRight={<Badge badgeContent={feedback.length} primary={true}></Badge>}
           />
-          <Paper className="feedback-container" zDepth={2}>
+          <Paper zDepth={2}>
             <List className={styles.feedbackList}>
               {feedback.map((f) => {
                 return <FeedbackItem key={f.key} item={f} />
