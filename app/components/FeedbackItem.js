@@ -44,7 +44,8 @@ export default class FeedbackItem extends Component {
         <Divider />
         <RightDrawer
           item={item}
-          open={this.state.open} />
+          open={this.state.open} 
+          drawerTap={this.handleToggle} />
       </div>
     );
   }

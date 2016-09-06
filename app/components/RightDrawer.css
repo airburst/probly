@@ -1,3 +1,7 @@
+.list {
+    padding: 16px;
+}
+
 .url {
     color: black;
     text-decoration: underline;

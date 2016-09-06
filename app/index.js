@@ -18,7 +18,7 @@ const config = {
   storageBucket: 'probly-36ae1.appspot.com',
 };
 const fb = firebase.initializeApp(config);
-const ref = fb.database().ref('mylife/400');
+const ref = fb.database().ref('mylife/4-0-0');
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
