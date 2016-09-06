@@ -3,11 +3,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Badge from 'material-ui/Badge';
 import { List } from 'material-ui/List';
 import Paper from 'material-ui/Paper';
+import Snackbar from 'material-ui/Snackbar';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 import Toggle from 'material-ui/Toggle';
 import styles from './Home.css';
 import FeedbackItem from './FeedbackItem';
 import store from '../index';
+import * as FeedbackActions from '../actions/feedback';
 import * as SettingsActions from '../actions/settings';
 
 const toggleStyles = {
@@ -23,17 +25,25 @@ const toggleStyles = {
 class Home extends Component {
 
   static propTypes = {
-    feedback: PropTypes.array.isRequired
+    feedback: PropTypes.array.isRequired,
+    settings: PropTypes.object.isRequired
   };
 
-  handleChange = () => {
-    store.dispatch(SettingsActions.toggleOpenItems());
+  handleToggle = () => {
+    SettingsActions.toggleOpenItems();
+  }
+
+  handleRequestClose = () => {
+    SettingsActions.hideReOpenUndo();
   };
+
+  reOpenItem = () => {
+    FeedbackActions.openItem(this.props.settings.lastKey);
+    SettingsActions.hideReOpenUndo();
+  }
 
   render() {
     const { feedback } = this.props;
-    const toggleState = (store !== undefined) ?
-      store.getState().settings.filterOpenRecords : true;
 
     return (
       <MuiThemeProvider>
@@ -49,8 +59,8 @@ class Home extends Component {
               <div style={toggleStyles.block}>
                 <Toggle
                   label="Only show Open items"
-                  defaultToggled={toggleState}
-                  onToggle={this.handleChange}
+                  defaultToggled={this.props.settings.filterOpenRecords}
+                  onToggle={this.handleToggle}
                   style={toggleStyles.toggle}
                 />
               </div>
@@ -62,6 +72,15 @@ class Home extends Component {
               {feedback.map((f) => { return <FeedbackItem key={f.key} item={f} />; }) }
             </List>
           </Paper>
+
+          <Snackbar
+            open={this.props.settings.showReopenUndo}
+            message="Closed this record"
+            autoHideDuration={4000}
+            action="undo"
+            onActionTouchTap={this.reOpenItem}
+            onRequestClose={this.handleRequestClose}
+          />
         </div>
       </MuiThemeProvider>
     );

@@ -7,7 +7,8 @@ import Home from '../components/Home';
 
 function mapStateToProps(state) {
   return {
-    feedback: state.feedback
+    feedback: state.feedback,
+    settings: state.settings
   };
 }
 

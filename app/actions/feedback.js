@@ -43,6 +43,10 @@ export function closeItem(key) {
   updateItem(key, { status: 'Closed' });
 }
 
+export function openItem(key) {
+  updateItem(key, { status: 'Open' });
+}
+
 export function updateItem(key, changes) {
   const ref = fireDB.child(key);
   ref.update(changes);

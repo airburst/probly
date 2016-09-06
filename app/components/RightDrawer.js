@@ -8,6 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import Snackbar from 'material-ui/Snackbar';
 import * as FeedbackActions from '../actions/feedback';
+import * as SettingsActions from '../actions/settings';
 import styles from './RightDrawer.css';
 
 const moment = require('moment');
@@ -31,11 +32,12 @@ export default class RightDrawer extends Component {
 
   handleRequestClose = () => {
     this.setState({ snackBarOpen: false });
+    // this.props.drawerTap();
   };
 
   closeItem = () => {
+    SettingsActions.showReOpenUndo(this.props.item.key);
     FeedbackActions.closeItem(this.props.item.key);
-    this.props.drawerTap();
   }
 
   formatDate(date) {
@@ -81,6 +83,7 @@ export default class RightDrawer extends Component {
             onTouchTap={this.closeItem}
           />
         </div>
+
         <Snackbar
           open={this.state.snackBarOpen}
           message="Copied..."
