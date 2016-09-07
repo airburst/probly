@@ -8,8 +8,7 @@ import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import Snackbar from 'material-ui/Snackbar';
-import * as FeedbackActions from '../actions/feedback';
-import * as SettingsActions from '../actions/settings';
+import * as Firebase from '../services/firebase';
 import styles from './RightDrawer.css';
 
 const moment = require('moment');
@@ -19,7 +18,8 @@ export default class RightDrawer extends Component {
   static propTypes = {
     item: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired,
-    drawerTap: PropTypes.func.isRequired
+    drawerTap: PropTypes.func.isRequired,
+    showReOpenUndo: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -33,12 +33,11 @@ export default class RightDrawer extends Component {
 
   handleRequestClose = () => {
     this.setState({ snackBarOpen: false });
-    // this.props.drawerTap();
   };
 
   closeItem = () => {
-    SettingsActions.showReOpenUndo(this.props.item.key);
-    FeedbackActions.closeItem(this.props.item.key);
+    this.props.showReOpenUndo(this.props.item.key);
+    Firebase.closeItem(this.props.item.key);
   }
 
   formatDate(date) {

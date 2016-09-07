@@ -1,0 +1,292 @@
+{
+    "files": {
+        "browser": {
+            "files": {
+                "api": {
+                    "files": {
+                        "app.js": {
+                            "size": 2392,
+                            "offset": "0"
+                        },
+                        "auto-updater": {
+                            "files": {
+                                "auto-updater-native.js": {
+                                    "size": 229,
+                                    "offset": "2571"
+                                },
+                                "auto-updater-win.js": {
+                                    "size": 1746,
+                                    "offset": "2800"
+                                },
+                                "squirrel-update-win.js": {
+                                    "size": 3547,
+                                    "offset": "4546"
+                                }
+                            }
+                        },
+                        "auto-updater.js": {
+                            "size": 179,
+                            "offset": "2392"
+                        },
+                        "browser-window.js": {
+                            "size": 5175,
+                            "offset": "8093"
+                        },
+                        "content-tracing.js": {
+                            "size": 57,
+                            "offset": "13268"
+                        },
+                        "dialog.js": {
+                            "size": 6388,
+                            "offset": "13325"
+                        },
+                        "exports": {
+                            "files": {
+                                "electron.js": {
+                                    "size": 2377,
+                                    "offset": "19713"
+                                }
+                            }
+                        },
+                        "global-shortcut.js": {
+                            "size": 72,
+                            "offset": "22090"
+                        },
+                        "ipc-main.js": {
+                            "size": 189,
+                            "offset": "22162"
+                        },
+                        "menu-item-roles.js": {
+                            "size": 4373,
+                            "offset": "22351"
+                        },
+                        "menu-item.js": {
+                            "size": 2781,
+                            "offset": "26724"
+                        },
+                        "menu.js": {
+                            "size": 9175,
+                            "offset": "29505"
+                        },
+                        "navigation-controller.js": {
+                            "size": 5658,
+                            "offset": "38680"
+                        },
+                        "power-monitor.js": {
+                            "size": 223,
+                            "offset": "44338"
+                        },
+                        "power-save-blocker.js": {
+                            "size": 77,
+                            "offset": "44561"
+                        },
+                        "protocol.js": {
+                            "size": 802,
+                            "offset": "44638"
+                        },
+                        "screen.js": {
+                            "size": 192,
+                            "offset": "45440"
+                        },
+                        "session.js": {
+                            "size": 516,
+                            "offset": "45632"
+                        },
+                        "system-preferences.js": {
+                            "size": 248,
+                            "offset": "46148"
+                        },
+                        "tray.js": {
+                            "size": 176,
+                            "offset": "46396"
+                        },
+                        "web-contents.js": {
+                            "size": 8222,
+                            "offset": "46572"
+                        }
+                    }
+                },
+                "chrome-extension.js": {
+                    "size": 12502,
+                    "offset": "54794"
+                },
+                "desktop-capturer.js": {
+                    "size": 2707,
+                    "offset": "67296"
+                },
+                "guest-view-manager.js": {
+                    "size": 7008,
+                    "offset": "70003"
+                },
+                "guest-window-manager.js": {
+                    "size": 4733,
+                    "offset": "77011"
+                },
+                "init.js": {
+                    "size": 5165,
+                    "offset": "81744"
+                },
+                "objects-registry.js": {
+                    "size": 2544,
+                    "offset": "86909"
+                },
+                "rpc-server.js": {
+                    "size": 12486,
+                    "offset": "89453"
+                }
+            }
+        },
+        "common": {
+            "files": {
+                "api": {
+                    "files": {
+                        "callbacks-registry.js": {
+                            "size": 1705,
+                            "offset": "101939"
+                        },
+                        "clipboard.js": {
+                            "size": 257,
+                            "offset": "103644"
+                        },
+                        "crash-reporter.js": {
+                            "size": 2724,
+                            "offset": "103901"
+                        },
+                        "deprecate.js": {
+                            "size": 2840,
+                            "offset": "106625"
+                        },
+                        "deprecations.js": {
+                            "size": 242,
+                            "offset": "109465"
+                        },
+                        "exports": {
+                            "files": {
+                                "electron.js": {
+                                    "size": 1287,
+                                    "offset": "109707"
+                                }
+                            }
+                        },
+                        "is-promise.js": {
+                            "size": 334,
+                            "offset": "110994"
+                        },
+                        "native-image.js": {
+                            "size": 54,
+                            "offset": "111328"
+                        },
+                        "shell.js": {
+                            "size": 47,
+                            "offset": "111382"
+                        }
+                    }
+                },
+                "init.js": {
+                    "size": 1837,
+                    "offset": "111429"
+                },
+                "reset-search-paths.js": {
+                    "size": 1322,
+                    "offset": "113266"
+                }
+            }
+        },
+        "renderer": {
+            "files": {
+                "api": {
+                    "files": {
+                        "desktop-capturer.js": {
+                            "size": 1485,
+                            "offset": "114588"
+                        },
+                        "exports": {
+                            "files": {
+                                "electron.js": {
+                                    "size": 805,
+                                    "offset": "116073"
+                                }
+                            }
+                        },
+                        "ipc-renderer.js": {
+                            "size": 1087,
+                            "offset": "116878"
+                        },
+                        "remote.js": {
+                            "size": 10806,
+                            "offset": "117965"
+                        },
+                        "screen.js": {
+                            "size": 52,
+                            "offset": "128771"
+                        },
+                        "web-frame.js": {
+                            "size": 341,
+                            "offset": "128823"
+                        }
+                    }
+                },
+                "chrome-api.js": {
+                    "size": 5425,
+                    "offset": "129164"
+                },
+                "content-scripts-injector.js": {
+                    "size": 2164,
+                    "offset": "134589"
+                },
+                "extensions": {
+                    "files": {
+                        "event.js": {
+                            "size": 430,
+                            "offset": "136753"
+                        },
+                        "i18n.js": {
+                            "size": 2604,
+                            "offset": "137183"
+                        },
+                        "storage.js": {
+                            "size": 1642,
+                            "offset": "139787"
+                        },
+                        "web-navigation.js": {
+                            "size": 529,
+                            "offset": "141429"
+                        }
+                    }
+                },
+                "init.js": {
+                    "size": 4822,
+                    "offset": "141958"
+                },
+                "inspector.js": {
+                    "size": 2850,
+                    "offset": "146780"
+                },
+                "override.js": {
+                    "size": 7621,
+                    "offset": "149630"
+                },
+                "web-view": {
+                    "files": {
+                        "guest-view-internal.js": {
+                            "size": 4174,
+                            "offset": "157251"
+                        },
+                        "web-view-attributes.js": {
+                            "size": 10600,
+                            "offset": "161425"
+                        },
+                        "web-view-constants.js": {
+                            "size": 1211,
+                            "offset": "172025"
+                        },
+                        "web-view.js": {
+                            "size": 17045,
+                            "offset": "173236"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

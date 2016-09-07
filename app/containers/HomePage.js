@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as FeedbackActions from '../actions/feedback';
+import * as SettingsActions from '../actions/settings';
 import Home from '../components/Home';
-
 
 function mapStateToProps(state) {
   return {
@@ -13,7 +12,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(FeedbackActions, dispatch);
+  return bindActionCreators(Object.assign({}, SettingsActions, FeedbackActions), dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

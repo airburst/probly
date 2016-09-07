@@ -10,7 +10,8 @@ const moment = require('moment');
 export default class FeedbackItem extends Component {
 
   static propTypes = {
-    item: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired,
+    showReOpenUndo: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -58,6 +59,7 @@ export default class FeedbackItem extends Component {
           item={item}
           open={this.state.open}
           drawerTap={this.handleToggle}
+          showReOpenUndo={this.props.showReOpenUndo}
         />
       </div>
     );

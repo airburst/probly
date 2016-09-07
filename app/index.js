@@ -7,13 +7,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import routes from './routes';
 import configureStore from './store/configureStore';
 import './app.global.css';
-import * as FeedbackActions from './actions/feedback';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
-
-// Initialise firebase connection
-FeedbackActions.initialise();
 
 // Touch Tap Plugin
 injectTapEventPlugin();

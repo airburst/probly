@@ -11,8 +11,7 @@ import AppBar from 'material-ui/AppBar';
 import { red200 } from 'material-ui/styles/colors';
 import styles from './Home.css';
 import FeedbackItem from './FeedbackItem';
-import * as FeedbackActions from '../actions/feedback';
-import * as SettingsActions from '../actions/settings';
+import * as Firebase from '../services/firebase';
 import theme from './theme';
 
 const toggleStyles = {
@@ -32,8 +31,16 @@ class Home extends Component {
 
   static propTypes = {
     feedback: PropTypes.array.isRequired,
-    settings: PropTypes.object.isRequired
+    settings: PropTypes.object.isRequired,
+    setFeedback: PropTypes.func.isRequired,
+    toggleOpenItems: PropTypes.func.isRequired,
+    hideReOpenUndo: PropTypes.func.isRequired,
+    showReOpenUndo: PropTypes.func.isRequired
   };
+
+  componentDidMount() {
+    Firebase.connect(this.updateFeedbackState);
+  }
 
   getVisibleFeedback(list, filter) {
     switch (filter) {
@@ -48,17 +55,21 @@ class Home extends Component {
     }
   }
 
+  updateFeedbackState = (f) => {
+    this.props.setFeedback(f);
+  }
+
   handleToggle = () => {
-    SettingsActions.toggleOpenItems();
+    this.props.toggleOpenItems();
   }
 
   handleRequestClose = () => {
-    SettingsActions.hideReOpenUndo();
+    this.props.hideReOpenUndo();
   };
 
   reOpenItem = () => {
-    FeedbackActions.openItem(this.props.settings.lastKey);
-    SettingsActions.hideReOpenUndo();
+    Firebase.openItem(this.props.settings.lastKey);
+    this.props.hideReOpenUndo();
   }
 
   render() {
@@ -93,7 +104,7 @@ class Home extends Component {
                 </div>
               </div>
               <Divider />
-              {visibleItems.map(f => { return <FeedbackItem key={f.key} item={f} />; }) }
+              {visibleItems.map(f => { return <FeedbackItem key={f.key} item={f} showReOpenUndo={this.props.showReOpenUndo} />; }) }
             </List>
           </Paper>
 
