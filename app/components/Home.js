@@ -93,7 +93,7 @@ class Home extends Component {
                 </div>
               </div>
               <Divider />
-              {visibleItems.map((f) => { return <FeedbackItem key={f.key} item={f} />; }) }
+              {visibleItems.map(f => { return <FeedbackItem key={f.key} item={f} />; }) }
             </List>
           </Paper>
 
