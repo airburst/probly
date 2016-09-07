@@ -23,18 +23,17 @@ export function setFeedback(feedback) {
 // Connect to Firebase Ref and dispatch updates to app on changes
 export function initialise() {
   fireDB.on('value', (data) => {
-    const feedback = filterOpenItems(data); // Filter Open records
+    const feedback = filterItems(data); // Filter Open records
     store.dispatch(setFeedback(feedback));
   });
 }
 
-const filterOpenItems = (data) => {
+const filterItems = (data) => {
   const feedback = [];
-  const filterOpenRecords = store.getState().settings.filterOpenRecords;
   data.forEach((row) => {
     const item = Object.assign({}, row.val());
     item.key = row.key;
-    if ((item.status === 'Open') || !filterOpenRecords) { feedback.push(item); }
+    feedback.push(item);
   });
   return feedback;
 };

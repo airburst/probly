@@ -50,8 +50,24 @@ class Home extends Component {
     SettingsActions.hideReOpenUndo();
   }
 
+  getVisibleFeedback(list, filter) {
+    switch (filter) {
+      case true:
+        return list.filter((l) => {
+          return (l.status === 'Open');
+        });
+
+      case false:
+        return list;
+
+      default:
+        return list;
+    }
+  }
+
   render() {
-    const { feedback } = this.props;
+    const { feedback, settings } = this.props;
+    const visibleItems = this.getVisibleFeedback(feedback, settings.filterOpenRecords);
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
@@ -70,7 +86,7 @@ class Home extends Component {
                   style={toggleStyles.chip}
                   backgroundColor={red200}
                 >
-                  {feedback.length} feedback items
+                  {visibleItems.length} feedback items
                 </Chip>
                 <div style={toggleStyles.block}>
                   <Toggle
@@ -82,7 +98,7 @@ class Home extends Component {
                 </div>
               </div>
               <Divider />
-              {feedback.map((f) => { return <FeedbackItem key={f.key} item={f} />; }) }
+              {visibleItems.map((f) => { return <FeedbackItem key={f.key} item={f} />; }) }
             </List>
           </Paper>
 
