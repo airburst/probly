@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Divider from 'material-ui/Divider';
 import { ListItem } from 'material-ui/List';
+import { red100, grey50 } from 'material-ui/styles/colors';
 import RightDrawer from './RightDrawer';
 import styles from './FeedbackItem.css';
 
@@ -25,12 +26,24 @@ export default class FeedbackItem extends Component {
 
   render() {
     const { item } = this.props;
+    const bgStyle = (item.status === 'Open') ?
+    {
+      bg: {
+        backgroundColor: grey50
+      }
+    } :
+    {
+      bg: {
+        backgroundColor: red100
+      }
+    };
 
     return (
       <div>
         <ListItem
           key={item.key}
           onTouchTap={this.handleToggle}
+          style={bgStyle.bg}
         >
           <div>
             <div className={styles.site}>{item.site}</div>

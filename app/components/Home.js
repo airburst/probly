@@ -37,6 +37,19 @@ class Home extends Component {
     settings: PropTypes.object.isRequired
   };
 
+  getVisibleFeedback(list, filter) {
+    switch (filter) {
+      case true:
+        return list.filter(l => l.status === 'Open');
+
+      case false:
+        return list;
+
+      default:
+        return list;
+    }
+  }
+
   handleToggle = () => {
     SettingsActions.toggleOpenItems();
   }
@@ -48,21 +61,6 @@ class Home extends Component {
   reOpenItem = () => {
     FeedbackActions.openItem(this.props.settings.lastKey);
     SettingsActions.hideReOpenUndo();
-  }
-
-  getVisibleFeedback(list, filter) {
-    switch (filter) {
-      case true:
-        return list.filter((l) => {
-          return (l.status === 'Open');
-        });
-
-      case false:
-        return list;
-
-      default:
-        return list;
-    }
   }
 
   render() {
