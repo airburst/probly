@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
+import { indigo700 } from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import Divider from 'material-ui/Divider';
@@ -47,12 +48,14 @@ export default class RightDrawer extends Component {
   render() {
     const { item, open, drawerTap } = this.props;
     const style = { margin: 12 };
+    const appBarBg = { backgroundColor: indigo700 };
 
     return (
       <Drawer width={400} openSecondary open={open}>
         <AppBar
           title={<span style={styles.title}>{item.site}</span>}
           iconElementLeft={<IconButton onTouchTap={drawerTap}><NavigationClose /></IconButton>}
+          style={appBarBg}
         />
         <div>
           <div className={styles.list}>{item.feedback}</div>

@@ -9,8 +9,6 @@ import Snackbar from 'material-ui/Snackbar';
 import Toggle from 'material-ui/Toggle';
 import AppBar from 'material-ui/AppBar';
 import { red200 } from 'material-ui/styles/colors';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import styles from './Home.css';
 import FeedbackItem from './FeedbackItem';
 import * as FeedbackActions from '../actions/feedback';
@@ -74,7 +72,6 @@ class Home extends Component {
           <AppBar
             title="Probly -> MyLife Feedback"
             showMenuIconButton={false}
-            iconElementRight={<IconButton><MoreVertIcon /></IconButton>}
           />
 
           <Paper zDepth={0}>
