@@ -40,6 +40,8 @@ class Home extends Component {
 
   componentDidMount() {
     Firebase.connect(this.updateFeedbackState);
+    // Firebase.notifyAdded(this.notifyAdded);
+    // console.log('Notifer', notifier);             //
   }
 
   getVisibleFeedback(list, filter) {
@@ -59,6 +61,14 @@ class Home extends Component {
     this.props.setFeedback(f);
   }
 
+  // notifyAdded = (item) => {
+  //   console.log(item.val());            //
+  //   notifier.notify({
+  //     title: 'New MyLife Issue Raised',
+  //     message: 'Hello, there!'
+  //   });
+  // }
+
   handleToggle = () => {
     this.props.toggleOpenItems();
   }
@@ -77,13 +87,13 @@ class Home extends Component {
     const visibleItems = this.getVisibleFeedback(feedback, settings.filterOpenRecords);
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
+      <MuiThemeProvider muiTheme={getMuiTheme(theme) }>
         <div role="main" id="main">
 
           <AppBar
             title="Probly -> MyLife Feedback"
             showMenuIconButton={false}
-          />
+            />
 
           <Paper zDepth={0}>
             <List className={styles.feedbackList}>
@@ -91,7 +101,7 @@ class Home extends Component {
                 <Chip
                   style={toggleStyles.chip}
                   backgroundColor={red200}
-                >
+                  >
                   {visibleItems.length} feedback items
                 </Chip>
                 <div style={toggleStyles.block}>
@@ -100,7 +110,7 @@ class Home extends Component {
                     defaultToggled={this.props.settings.filterOpenRecords}
                     onToggle={this.handleToggle}
                     style={toggleStyles.toggle}
-                  />
+                    />
                 </div>
               </div>
               <Divider />
@@ -115,7 +125,7 @@ class Home extends Component {
             action="undo"
             onActionTouchTap={this.reOpenItem}
             onRequestClose={this.handleRequestClose}
-          />
+            />
         </div>
       </MuiThemeProvider>
     );

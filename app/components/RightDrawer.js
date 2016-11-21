@@ -44,6 +44,17 @@ export default class RightDrawer extends Component {
     return moment(date).format('DD/MM/YYYY');
   }
 
+  writeItem(item) {
+    return `Description:
+${item.feedback}
+
+Site:\t\t${item.site}
+Url:\t\t${item.url}
+Browser:\t${item.browser}
+Viewport:\t${item.viewport}
+Date:\t\t${this.formatDate(item.dateRaised)}`;
+  }
+
   render() {
     const { item, open, drawerTap } = this.props;
     const style = { margin: 12 };
@@ -74,7 +85,7 @@ export default class RightDrawer extends Component {
         <Divider />
         <div className={styles.buttonContainer}>
           <CopyToClipboard
-            text={item.feedback}
+            text={this.writeItem(item)}
             onCopy={() => this.handleTouchTap()}
           >
             <RaisedButton label="Copy to clipboard" primary style={style} />

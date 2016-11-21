@@ -13,6 +13,10 @@ export function connect(callback) {
   fireDB.on('value', data => callback(filterItems(data)));
 }
 
+export function notifyAdded(callback) {
+  fireDB.on('child_added', data => callback(data));
+}
+
 const filterItems = (data) => {
   const feedback = [];
   data.forEach((row) => {
